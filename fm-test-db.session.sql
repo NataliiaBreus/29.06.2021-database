@@ -1,4 +1,4 @@
-DROP TABLE users;
+DROP TABLE users CASCADE;
 CREATE TABLE users(
   id SERIAL NOT NULL UNIQUE,
   firstname VARCHAR(64) NOT NULL CHECK (firstname != ''),
@@ -6,7 +6,7 @@ CREATE TABLE users(
   email VARCHAR(256) NOT NULL CHECK (email != ''),
   is_male BOOLEAN NOT NULL,
   birthday DATE NOT NULL CHECK (birthday < CURRENT_DATE),
-  height NUMERIC(3, 2) NOT NULL CHECK (
+  height NUMERIC(3, 2)  CHECK (
     height > 0.2
     AND height < 3
   )
